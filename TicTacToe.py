@@ -1,3 +1,6 @@
+# Board Templates are there to help make the Board easily.
+# To know the Board in detail, please check boardDetails.txt!
+
 boardTemplate1 = [" ", " ", " ", " ", "|", " ", " ", " ", " ", "|", " ", " ", " ", " "]
 boardTemplate2 = ["_", "_", "_", "_", "|", "_", "_", "_", "_", "|", "_", "_", "_", "_"]
 boardTemplate3 = [" ", " ", " ", " ", "|", " ", " ", " ", " ", "|", " ", " ", " ", " "]
@@ -6,10 +9,17 @@ boardTemplate5 = ["_", "_", "_", "_", "|", "_", "_", "_", "_", "|", "_", "_", "_
 boardTemplate6 = [" ", " ", " ", " ", "|", " ", " ", " ", " ", "|", " ", " ", " ", " "]
 boardTemplate7 = [" ", " ", " ", " ", "|", " ", " ", " ", " ", "|", " ", " ", " ", " "]
 
+# Board list will hold the values necessary to form up the Board!
+
 Board = [boardTemplate1, boardTemplate2, boardTemplate3, boardTemplate4, boardTemplate5, boardTemplate6, boardTemplate7]
+
+# MoveColumnOrder and MoveRowOrder make us access 9 specific areas of
+# Our 14x7 TicTacToe Board.
 
 MoveColumnOrder = [0, 3, 6]
 MoveRowOrder = [2, 6, 11]
+
+# Prints The Board.
 
 def printBoard():
 	for _ in Board:
@@ -18,6 +28,8 @@ def printBoard():
 			print(_indice, end="")
 		print()
 	print()
+
+#Brings up the game introduction.
 
 def introduction():
 	tempIntroText = """
@@ -43,6 +55,10 @@ def introduction():
 	print(tempIntroText)
 	print(tempBoardStr)
 
+# Function checks if a move player wants to make has been
+# already made or not. It also checks if the move number
+# exceeds the board limit or not.
+
 def isMoveAlreadyMade(move):
 	if move>=1 and move<=9:
 		move = move-1
@@ -54,6 +70,10 @@ def isMoveAlreadyMade(move):
 			return True
 	else:
 		return True
+
+# This is a driver function which makes the move as desired
+# by the player on the board. Will throw invalid move error if
+# move made is out of bounds of orignal board.
 
 def makeMove(playerInfo, playerName, move):
 	if isMoveAlreadyMade(move) == False:
@@ -67,6 +87,10 @@ def makeMove(playerInfo, playerName, move):
 		print("\tInvalid move! Please try again!")
 		return False
 
+# lets a player make his/her move on the Board.
+# Asks repeatedly the player to input his move until
+# he/she comes up with a legal move.
+
 def letPlayerTakeTurn(playerInfo, playerName):
 	isMoveSuccess = False
 	while isMoveSuccess==False:
@@ -75,12 +99,17 @@ def letPlayerTakeTurn(playerInfo, playerName):
 		isMoveSuccess = makeMove(playerInfo, playerName, move)
 	printBoard()
 
+# Checks if the token that user has picked is valid
+# to be placed on our board or not.
 
 def isTokenValid(token):
 	if len(token) != 1:
 		return False
 	else:
 		return True
+
+# This function lets both the players choose their respective
+# tokens turn by turn.
 
 def chooseToken(Player1, Player2):
 	tokenDictionary = {}
@@ -121,6 +150,14 @@ def chooseToken(Player1, Player2):
 
 	return playerDictionary
 
+################################################################
+# The following functions check for winning conditions if any
+# arises during the course of game. The check is by rows,
+# columns and diagonals.
+
+# The following function checks to see if winning condition
+# is achieved on any rows.
+
 def scanRows():
 	isScanSuccess = False
 	scanList = [True, True, True]
@@ -141,6 +178,9 @@ def scanRows():
 
 	return isScanSuccess
 
+# The following function checks to see if winning condition
+# is achieved on any Columns
+
 def scanColumns():
 	isScanSuccess = False
 	scanList = [True, True, True]
@@ -160,6 +200,9 @@ def scanColumns():
 		isScanSuccess = scanList[k] or isScanSuccess
 
 	return isScanSuccess
+
+# The following function checks to see if winning condition
+# is achieved on any Diagonals
 
 def scanDiagonals():
 	isLeftDiagonalScanSuccess = True
@@ -190,8 +233,16 @@ def scanDiagonals():
 
 	return isLeftDiagonalScanSuccess==True or isRightDiagonalScanSuccess==True
 
+# This function recieves data from all the three above functions
+# and returns if any winning condition is achieved or not
+
 def hasAnyPlayerWon():
 	return scanDiagonals()==True or scanColumns()==True or scanRows()==True
+
+################################################################
+
+# The following function is the main function, i.e it directs
+# the flow of all commands in the following game.
 
 def _main():
 	introduction()
@@ -217,6 +268,9 @@ def _main():
 			i = i+1
 		else:
 			i = i-1
+
+# While loop drives the main program till the time users want
+# to play the game.
 
 while True:
 	_main()
