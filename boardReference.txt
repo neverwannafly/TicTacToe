@@ -1,0 +1,10 @@
+# Board for reference!
+#     |    |    
+# ____|____|____
+#     |    |    
+#     |    |     
+# ____|____|____
+#     |    |    
+#     |    |   
+
+-> The board has 14 rows and 7 columns.
