@@ -12,10 +12,12 @@ boardTemplate7 = [" ", " ", " ", " ", "|", " ", " ", " ", " ", "|", " ", " ", " 
 # Board list will hold the values necessary to form up the Board!
 
 Board = [boardTemplate1, boardTemplate2, boardTemplate3, boardTemplate4, boardTemplate5, boardTemplate6, boardTemplate7]
-oldBoard = Board
+OldBoard = Board
+
+# Resets the board to it's orignal state
 
 def resetBoard():
-	Board = oldBoard
+    Board = OldBoard
 
 # MoveColumnOrder and MoveRowOrder make us access 9 specific areas of
 # Our 14x7 TicTacToe Board.
@@ -54,7 +56,6 @@ def introduction():
 			____|____|____
 			    |    |    
 			  7 | 8  | 9 
-
 	"""
 	print(tempIntroText)
 	print(tempBoardStr)
@@ -251,13 +252,11 @@ def hasAnyPlayerWon():
 def _main():
 	introduction()
 	Player1 = input("\tPlayer1 please enter your name : ")
-	GlobalPlayer1 = Player1
 	Player2 = input("\tPlayer2 please enter your name : ")
-	GlobalPlayer2 = Player2
 	print("")
 	playerInfo = chooseToken(Player1, Player2)
-	playerList = [Player1, Player2]
 
+	playerList = [Player1, Player2]
 	totalPossibleMoves = 9
 	i = 0
 
@@ -279,10 +278,9 @@ def _main():
 # to play the game.
 
 while True:
+    resetBoard()
 	_main()
 	print("\n\tPress Y to play again and Q to Quit the game : ", end="")
 	choice = input()
 	if choice=="Q" or choice=="q":
 		break
-	resetBoard()
-	isGameLengthMoreThanOne = True
