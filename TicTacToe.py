@@ -278,7 +278,7 @@ def _main():
 # to play the game.
 
 while True:
-    resetBoard()
+	resetBoard()
 	_main()
 	print("\n\tPress Y to play again and Q to Quit the game : ", end="")
 	choice = input()
