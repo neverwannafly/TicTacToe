@@ -17,5 +17,18 @@ Below are previews from the game!
     <img src="imgs/game.png"></img>
 </p>
 
+## How to Play
+<ul>
+<li>Download the zip
+<li>Goto the project directory through terminal and enter
+</ul>
+
+```
+$ python3 TicTacToe.py
+```
+<br>
+
 ##### Have fun and Enjoy !
 ##### Be sure to add in your reviews !
+
+~@Neverwannafly
