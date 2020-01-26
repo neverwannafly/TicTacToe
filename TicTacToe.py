@@ -17,7 +17,8 @@ OldBoard = Board
 # Resets the board to it's orignal state
 
 def resetBoard():
-    Board = OldBoard
+	global Board
+	Board = OldBoard
 
 # MoveColumnOrder and MoveRowOrder make us access 9 specific areas of
 # Our 14x7 TicTacToe Board.
