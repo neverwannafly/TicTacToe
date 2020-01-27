@@ -6,6 +6,7 @@
 <li>Players make their moves by inputting the number corresponding to the board cell number of TicTacToe.</li>
 <li>Game provides safetly against illegal moves, i.e game wont crash if you input an illegal move and would be given chances to input your move again.</li>
 <li>Game has a basic restrart functionality.</li>
+<li>Game includes an AI made using min-max algorithm</li>
 </ul>
 
 ## Preview
