@@ -37,7 +37,7 @@ def isMoveLeft():
                 return True
     return False
 
-def min_max(tokenA, tokenB, isPlayerATurn):
+def min_max(tokenA, tokenB, isPlayerATurn, alpha, beta):
     score = eval(isPlayerATurn)
     if (score==10):
         return score
@@ -53,8 +53,11 @@ def min_max(tokenA, tokenB, isPlayerATurn):
             for j in MoveRowOrder:
                 if Board[i][j] == " ":
                     Board[i][j] = tokenA
-                    best = max(best, min_max(tokenA, tokenB, not isPlayerATurn))
+                    best = max(best, min_max(tokenA, tokenB, not isPlayerATurn, alpha, beta))
+                    alpha = max(best, alpha)
                     Board[i][j] = " "
+                if beta <= alpha:
+                    break
         return best
     else:
         best = 1000
@@ -62,8 +65,11 @@ def min_max(tokenA, tokenB, isPlayerATurn):
             for j in MoveRowOrder:
                 if Board[i][j] == " ":
                     Board[i][j] = tokenB
-                    best = min(best, min_max(tokenA, tokenB, not isPlayerATurn))
+                    best = min(best, min_max(tokenA, tokenB, not isPlayerATurn, alpha, beta))
+                    beta = min(beta, best)
                     Board[i][j] = " "
+                if beta <= alpha:
+                    break
         return best
 
 def best_move(tokenA, tokenB):
@@ -73,7 +79,7 @@ def best_move(tokenA, tokenB):
         for j in MoveRowOrder:
             if Board[i][j] == " ":
                 Board[i][j] = tokenA
-                ev = min_max(tokenA, tokenB, False)
+                ev = min_max(tokenA, tokenB, False, -100, +100)
                 Board[i][j] = " "
                 if ev > best_val:
                     best_val = ev
