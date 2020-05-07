@@ -97,28 +97,28 @@ let Astar = function(start_state, goal_state) {
             let tmp = new_state[i+1][j];
             new_state[i+1][j] = new_state[i][j];
             new_state[i][j] = tmp;
-            add(new Node(fitness(new_state, goal_state), new_state));
+            add(new Node(1+fitness(new_state, goal_state), new_state));
         }
         if (i-1 >= 0) {
             let new_state = JSON.parse(JSON.stringify(u.state));
             let tmp = new_state[i-1][j];
             new_state[i-1][j] = new_state[i][j];
             new_state[i][j] = tmp;
-            add(new Node(fitness(new_state, goal_state), new_state));
+            add(new Node(1+fitness(new_state, goal_state), new_state));
         }
         if (j+1 < goal_state.length) {
             let new_state = JSON.parse(JSON.stringify(u.state));
             let tmp = new_state[i][j+1];
             new_state[i][j+1] = new_state[i][j];
             new_state[i][j] = tmp;
-            add(new Node(fitness(new_state, goal_state), new_state));
+            add(new Node(1+fitness(new_state, goal_state), new_state));
         }
         if (j-1 >= 0) {
             let new_state = JSON.parse(JSON.stringify(u.state));
             let tmp = new_state[i][j-1];
             new_state[i][j-1] = new_state[i][j];
             new_state[i][j] = tmp;
-            add(new Node(fitness(new_state, goal_state), new_state));
+            add(new Node(1+fitness(new_state, goal_state), new_state));
         }
     }
     return false;
