@@ -1,4 +1,5 @@
 from collections import defaultdict 
+
 jug1, jug2, aim = 4, 3, 2
 visited = defaultdict(lambda: False) 
 
